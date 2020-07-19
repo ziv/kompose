@@ -5,10 +5,10 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2017",
+    "target": "ES2020",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./lib",
+    "baseUrl": "./src",
     "incremental": true
   },
   "exclude": ["node_modules", "dist"]
