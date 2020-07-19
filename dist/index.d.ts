@@ -1,1 +1,0 @@
-export { kompose } from './kompose';
