@@ -26,7 +26,7 @@ export const getLoginPath = (ctx: {loginPath: string}) => ctx.loginPath;
 export const queryStringFactory = (ctx?: any) => (params: object) => qs(params);
 ```
 
-Factory where composition start:
+Factory is where composition start:
 ```typescript
 // factory function
 // each provider represent argument
@@ -58,3 +58,7 @@ const loginUrl = composition(config);
 console.log( loginUrl({foo: 'bar'}) );
 // https://example.com/login/path?foo=bar
 ```
+
+
+
+Enjoy :)
