@@ -1,5 +1,5 @@
 {
-  "name": "kompose",
+  "name": "@xpr/kompose",
   "version": "0.0.1",
   "description": "tiny functional di by composition with zero dependencies",
   "main": "lib/index.js",
