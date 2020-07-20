@@ -1,34 +1,37 @@
 # kompose
-tiny functional di by composition with zero dependencies
+tiny functional composition utilities (educational project)
 
-
-## Example
+## Examples
+### 01 login url
+Configuration file:
 ```typescript
-// interfaces.ts
-export interface Config {
-  url: string;
-  path: string;
-  customHeaders: {
-    Foo: 'sample',
-    Bar: 'other-sample'
-  }
-}
+// config.ts
+export default {
+   baseUrl: 'https://example.com',
+   loginPath: '/login/path',
+
+};
 ```
 
-providers:
+Providers are data accessors, factories, getter etc. All providers get context as argument.
 ```typescript
-// providers.ts
+// provider.ts
+import {qs} from './qs'; // arbitrary query string library
 
-export const fullUrl = (ctx: Config) => `${ctx.url}${ctx.path`;
+// data accessors providers
+export const getBaseUrl = (ctx: {baseUrl: string}) => ctx.baseUrl;
+export const getLoginPath = (ctx: {loginPath: string}) => ctx.loginPath;
 
-export const headers = (ctx: Config) => ctx.customHeaders;
-
+// factory provider
+export const queryStringFactory = (ctx?: any) => (params: object) => qs(params);
 ```
 
-api:
+Factory where composition start:
 ```typescript
-// api.ts
-import {kompose} from 'kompose';
-
-export const client = kompose(fullUrl, headers)((url, headers) => (client) => client({url, headers}))
+// factory function
+// each provider represent argument
+const loginUrlFactory = (baseUrl: string, loginPath: string, queryString: Function) =>
+    // return the composed function with optional arguments
+    // the composed function has access to local arguments and to factory arguments
+    (params: object) => `${baseUrl}${loginPath}?` +  queryString(params);
 ```
