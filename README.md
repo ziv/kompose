@@ -35,3 +35,26 @@ const loginUrlFactory = (baseUrl: string, loginPath: string, queryString: Functi
     // the composed function has access to local arguments and to factory arguments
     (params: object) => `${baseUrl}${loginPath}?` +  queryString(params);
 ```
+
+Composition and usage:
+```typescript
+import {factory, kompose, provide} from '../src';
+import config from './share/config';
+import {getBaseUrl, getLoginPath, queryStringFactory} from './share/providers';
+
+const loginUrlFactory = (baseUrl: string, loginPath: string, queryString: Function) =>
+    (params: object) => `${baseUrl}${loginPath}?` +  queryString(params);
+
+// "provide" and "factory" are helpers function
+const composition = kompose(
+    provide(getBaseUrl, getLoginPath, queryStringFactory),
+    factory(loginUrlFactory)
+);
+
+// when context is available...
+const loginUrl = composition(config);
+
+// ...the function is ready to use
+console.log( loginUrl({foo: 'bar'}) );
+// https://example.com/login/path?foo=bar
+```
