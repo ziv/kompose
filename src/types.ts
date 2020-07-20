@@ -1,7 +1,4 @@
-export type Invokable<T = any> = (...args: any) => T;
+export type Func<T = any> = (...args: any) => T;
 
-export type Providers = Invokable<Invokable[]>;
-export type Factory<T> = Invokable<Invokable<T>>;
-
-export type Kompozition<T = any, R = any> = (ctx: T) => Promise<R>;
-export type KompozitionSync<T = any, R = any> = (ctx: T) => R;
+export type Providers = Func<Func[]>;
+export type Factory<T> = Func<Func<T>>;
