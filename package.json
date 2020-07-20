@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "tiny functional di by composition with zero dependencies",
   "main": "lib/index.js",
-  "types": "dist/index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest",
     "prebuild": "rm -rf ./lib",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/ziv/kompose.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ziv/kompose/issues"
   },
