@@ -1,5 +1,5 @@
 {
-  "name": "@xprmntl/kompose",
+  "name": "@ziv/kompose",
   "version": "0.0.1",
   "description": "tiny functional di by composition with zero dependencies",
   "main": "lib/index.js",
@@ -12,6 +12,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ziv/kompose.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "author": "",
   "license": "MIT",
